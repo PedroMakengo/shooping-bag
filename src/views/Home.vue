@@ -36,12 +36,12 @@
 export default {
   name: "Home",
   data() {
-    return {
-      products: this.$store.state.products,
-    };
+    return {};
   },
-  created() {
-    console.log(this.products);
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
   },
 
   methods: {},

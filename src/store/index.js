@@ -1,10 +1,21 @@
 import { createStore } from "vuex";
+import axios from "axios";
 
 export default createStore({
   state: {
-    products: [1, 2, 3],
+    products: [],
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    loadProducts(state, products) {
+      state.products = products;
+    },
+  },
+  actions: {
+    async loadProducts({ commit }) {
+      let response = await axios.get("https://fakestoreapi.com/products");
+      let data = await response.data;
+      commit("loadProducts", data);
+    },
+  },
   modules: {},
 });
