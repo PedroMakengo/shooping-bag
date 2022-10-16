@@ -9,15 +9,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   created() {
     this.$store.dispatch("loadProducts");
   },
-  computed: {
-    productsInBag() {
-      return this.$store.state.productsInBag;
-    },
-  },
+  computed: mapState(["productsInBag"]),
 };
 </script>
 

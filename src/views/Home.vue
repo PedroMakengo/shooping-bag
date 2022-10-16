@@ -16,27 +16,27 @@
         <button v-if="!isInBag(product)" @click="addToBag(product)">
           Adicionar ao carrinho
         </button>
-        <button v-else class="remove">Remove from bag</button>
+        <button
+          v-else
+          class="remove"
+          @click="this.$store.dispatch('removeFromBag', product.id)"
+        >
+          Remove from bag
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Home",
   data() {
     return {};
   },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-    productsInBag() {
-      return this.$store.state.productsInBag;
-    },
-  },
 
+  computed: mapState(["products", "productsInBag"]),
   methods: {
     addToBag(product) {
       product.quantity = 1;
