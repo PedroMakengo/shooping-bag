@@ -11,8 +11,6 @@
         <button @click="addToBag(product)">Adicionar ao carrinho</button>
       </div>
     </div>
-
-    <p>{{ productsIngBag }} 2</p>
   </div>
 </template>
 
@@ -36,6 +34,7 @@ export default {
       product.quantity = 1;
       this.$store.dispatch("addToBag", product);
     },
+    isInBag() {},
   },
 };
 </script>
