@@ -11,6 +11,7 @@
         <button v-if="!isInBag(product)" @click="addToBag(product)">
           Adicionar ao carrinho
         </button>
+        <button v-else class="remove">Remove from bag</button>
       </div>
     </div>
   </div>
