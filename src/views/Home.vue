@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div class="products">
-      <div v-for="(product, index) in products" :key="index" class="product">
+      <div
+        v-for="(product, index) in products"
+        :key="index"
+        class="product"
+        :class="{ inBag: isInBag(product) }"
+      >
         <div
           class="product-image"
           :style="{ backgroundImage: `url('${product.image}')` }"
