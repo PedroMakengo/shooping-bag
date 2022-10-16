@@ -8,7 +8,9 @@
         ></div>
         <h4>{{ product.title }}</h4>
         <p class="price">R$ {{ product.price.toFixed(2) }}</p>
-        <button @click="addToBag(product)">Adicionar ao carrinho</button>
+        <button v-if="!isInBag(product)" @click="addToBag(product)">
+          Adicionar ao carrinho
+        </button>
       </div>
     </div>
   </div>
@@ -34,7 +36,9 @@ export default {
       product.quantity = 1;
       this.$store.dispatch("addToBag", product);
     },
-    isInBag() {},
+    isInBag(product) {
+      return this.productsInBag.find(item => item.id == product.id);
+    },
   },
 };
 </script>
